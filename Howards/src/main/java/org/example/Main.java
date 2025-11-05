@@ -1,9 +1,6 @@
 package org.example;
 
-import Models.House;
-import Models.HouseDAO;
-import Models.Wand;
-import Models.Wizard;
+import Models.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -31,17 +28,38 @@ public class Main {
         //Otra forma
         houses.forEach(house -> System.out.println(house.toString()));
 
-        /*Wand wand1 = new Wand("Acebo", "Pluma de Fenix", 28.0);
+        Wand wand1 = new Wand("Acebo", "Pluma de Fenix", 28.0);
         Wand wand2 = new Wand("Espino", "Pelo de unicornio", 23.0);
         Wand wand3 = new Wand("Vid", "Corazón de dragón", 25.4);
         Wand wand4 = new Wand("Sauce", "Pelo de unicornio", 25.4);
 
-        Wizard harry = new Wizard("Harry", 17);
-        Wizard ron = new Wizard("Ron Weasley", 17);
-        Wizard hermione = new Wizard("Hermione Gringer", 17);
-        Wizard draco = new Wizard("Draco Malfoy", 17);
+        WandDAO wandDAO = new WandDAO();
+        /*wandDAO.create(wand1);
+        wandDAO.create(wand2);
+        wandDAO.create(wand3);
+        wandDAO.create(wand4);*/
+        List<Wand> wands = wandDAO.getAll();
+        wands.forEach(wand -> System.out.println(wand.toString()));
 
-        System.out.println(gryffindor.toString());
+        Wizard harry = new Wizard("Harry", 17, 1, 1);
+        Wizard ron = new Wizard("Ron Weasley", 17,1,2);
+        Wizard hermione = new Wizard("Hermione Gringer", 17, 1, 3);
+        Wizard draco = new Wizard("Draco Malfoy", 17, 2,4 );
+
+        WizardDAO wizardDAO = new WizardDAO();
+        /*wizardDAO.create(harry);
+        wizardDAO.create(ron);
+        wizardDAO.create(hermione);
+        wizardDAO.create(draco);*/
+
+        List<Wizard> wizards = wizardDAO.getAll();
+        for (Wizard w : wizards){
+            System.out.println(w.toString());
+        }
+
+        wizardDAO.delete(5);
+
+        /*System.out.println(gryffindor.toString());
         System.out.println(slytherin.toString());
         System.out.println(hufflepuff.toString());
         System.out.println(ravenclaw.toString());
