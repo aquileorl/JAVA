@@ -1,20 +1,37 @@
 package org.example;
 
 import Models.House;
+import Models.HouseDAO;
 import Models.Wand;
 import Models.Wizard;
+
+import java.sql.SQLException;
+import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         House gryffindor = new House("Gryffindor", "Godric Gryffindor");
         House slytherin = new House("Slytherin", "Salazar Slytherin");
         House hufflepuff = new House("Hufflepuff", "Helga Hufflepuff");
         House ravenclaw = new House("Ravenclaw", "Rowena Ravenclaw");
 
-        Wand wand1 = new Wand("Acebo", "Pluma de Fenix", 28.0);
+        HouseDAO houseDAO = new HouseDAO();
+        /*houseDAO.create(slytherin);
+        houseDAO.create(hufflepuff);
+        houseDAO.create(ravenclaw);*/
+        List<House> houses = houseDAO.getAll();
+        houses.forEach(System.out::println);
+        //Otra forma
+        for (House h : houses){
+            System.out.println(h.toString());
+        }
+        //Otra forma
+        houses.forEach(house -> System.out.println(house.toString()));
+
+        /*Wand wand1 = new Wand("Acebo", "Pluma de Fenix", 28.0);
         Wand wand2 = new Wand("Espino", "Pelo de unicornio", 23.0);
         Wand wand3 = new Wand("Vid", "Corazón de dragón", 25.4);
         Wand wand4 = new Wand("Sauce", "Pelo de unicornio", 25.4);
@@ -40,7 +57,7 @@ public class Main {
         System.out.println(draco.toString());
         System.out.println("HOLA SOY EMILIO");
         System.out.println("HOLA soy LEo, gracias por subirlo");
-        System.out.println("HOLAHOLA");
+        System.out.println("HOLAHOLA");*/
 
         
 
